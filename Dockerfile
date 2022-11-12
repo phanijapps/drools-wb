@@ -18,4 +18,4 @@ EXPOSE 8001
 
 ####### RUNNING JBPM-WB ############
 WORKDIR /opt/jboss/wildfly/bin/
-#CMD ["./start_jbpm-wb.sh"]
+CMD ["./start_business-central-wb.sh"]
