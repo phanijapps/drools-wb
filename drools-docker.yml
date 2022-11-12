@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+
+  business-central:
+    image: quay.io/kiegroup/business-central-workbench
+   
+    ports:
+      - 8080:8080
+      - 9090:9090
+    environment:
+      - KIE_SSH_HOST=0.0.0.0
+   # volumes:
+    #  - './start_business-central-wb.sh:/opt/jboss/wildfly/bin/start_business-central-wb.sh'
+    #command:
+     # - sh -c 'chown jboss:jboss /opt/jboss/wildfly/bin/start_business-central-wb.sh'
+
+
+volumes:
+  kiestorage:
+
+
+   

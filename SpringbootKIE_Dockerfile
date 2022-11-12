@@ -1,0 +1,7 @@
+FROM quay.io/redcapcloud/openjdk:11
+
+MAINTAINER Admin
+
+#Copy Springboot jar after Maven package.
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
