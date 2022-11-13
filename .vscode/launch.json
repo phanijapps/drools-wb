@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-KieserverApplication<kieserver>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.acme.kie.kieserver.KieserverApplication",
+            "projectName": "kieserver",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
