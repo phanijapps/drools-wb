@@ -29,8 +29,10 @@ ENV KIE_SERVER_PROFILE standalone
 ####### CONFIGURATION ############
 USER root
 ADD etc/start_business-central-wb.sh $JBOSS_HOME/bin/start_business-central-wb.sh
+ADD kie-fs-realm-users $JBOSS_HOME/standalone/configuration/
 
 RUN chown jboss:jboss $JBOSS_HOME/bin/start_business-central-wb.sh
+RUN chown -R jboss:jboss $JBOSS_HOME/standalone/configuration/kie-fs-realm-users
 RUN chmod +x $JBOSS_HOME/bin/start_business-central-wb.sh
 
 
@@ -44,7 +46,10 @@ RUN chown jboss:jboss $JBOSS_HOME/standalone/deployments/*
 ####### CUSTOM JBOSS USER ############
 # Switchback to jboss user
 USER jboss
-RUN $JBOSS_HOME/bin/add-user.sh -a -u kieserver -p kieserver -ro admin,kie-server,rest-all
+ADD etc/jbpm-custom.cli $JBOSS_HOME/bin/jbpm-custom.cli
+RUN $JBOSS_HOME/bin/jboss-cli.sh --file=$JBOSS_HOME/bin/jbpm-custom.cli && \
+rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history/current
+#RUN $JBOSS_HOME/bin/add-user.sh -a -u kieserver -p kieserver -ro admin,kie-server,rest-all
 
 ####### EXPOSE INTERNAL JBPM GIT PORT ############
 EXPOSE 8001
