@@ -1,1 +1,1 @@
-docker build --pull --rm -f "Dockerfile" -t droolsmaritz:latest "." 
+docker build --pull --rm -f "Dockerfile" -t droolwb:latest "." 
